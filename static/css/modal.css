@@ -1,0 +1,212 @@
+/* ============================================= */
+/* STYLE DE LA FENÊTRE MODALE (masquée par défaut)  */
+/* ============================================= */
+.modal {
+    display: none;               /* Masque la modale par défaut */
+    position: fixed;             /* Reste fixe même au scroll */
+    z-index: 2000;               /* Au-dessus de tout (valeur élevée) */
+    left: 0;
+    top: 0;
+    width: 100%;                /* Prend toute la largeur de l'écran */
+    height: 100%;               /* Prend toute la hauteur de l'écran */
+    background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent noir */
+    overflow: auto;             /* Permet de scroller si le contenu est trop grand */
+}
+
+/* ============================================= */
+/* STYLE DU CONTENU DE LA MODALE                */
+/* ============================================= */
+.modal-content {
+    background-color: white;    /* Fond blanc pour la modale */
+    margin: 5% auto;            /* Centre verticalement et horizontalement */
+    padding: 20px;              /* Espacement interne */
+    border-radius: 5px;         /* Coins arrondis */
+    width: 80%;                 /* Largeur relative à l'écran */
+    max-width: 800px;           /* Largeur maximale */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Ombre pour un effet "flottant" */
+    position: relative;         /* Permet de positionner le bouton de fermeture */
+    overflow-y: auto;           /* Active le défilement vertical si le contenu dépasse */
+}
+
+/* ============================================= */
+/* STYLE DU BOUTON DE FERMETURE (×)              */
+/* ============================================= */
+.close-modal {
+    position: absolute;         /* Positionne le bouton en haut à droite */
+    right: 15px;
+    top: 10px;
+    font-size: 3.5em;            /* Taille du symbole × */
+    font-weight: bold;
+    color: red;                /* Couleur rouge */
+    width: 32px;
+    height: 32px;
+    cursor: pointer;            /* Curseur "main" au survol */
+}
+
+.close-modal:hover {
+    color: #333;                /* Couleur plus foncée au survol */
+}
+
+/* ============================================= */
+/* STYLE DU CORPS DE LA MODALE (image + infos)    */
+/* ============================================= */
+.modal-content {
+    /* Garde tes styles existants */
+    overflow-y: auto; /* Active le scroll vertical si le contenu dépasse */
+    max-height: 90vh; /* Limite la hauteur à 90% de la hauteur de l'écran */
+}
+
+.modal-body {
+    display: grid;
+    /* 2 colonnes pour la 1ère ligne : 1fr (flexible) et 227px (fixe) */
+    grid-template-columns: 423px 227px;
+    /* 2 lignes : 1 pour les infos/poster, 1 pour le résumé/acteurs */
+    grid-template-rows: auto auto;
+    /*gap: 1rem;*/ /* Espacement entre les blocs */
+    column-gap: 20px; /* Espacement horizontal entre les colonnes */
+    width: fit-content; /* Largeur totale = 423px + 227px + column-gap */
+
+
+}
+
+/* Positionnement des blocs */
+.modal-info {
+    grid-column: 1; /* 1ère colonne (largeur flexible) */
+    grid-row: 1;    /* 1ère ligne */
+    width: 423px; /* Largeur du premier bloc (exemple : 60% de la largeur du conteneur) */
+    hight: 359px;
+}
+.modal-poster {
+    grid-column: 2; /* 2ème colonne (227px) */
+    grid-row: 1;    /* 1ère ligne */
+    width: 227px;
+    height: 334px;
+}
+.modal-inforesume {
+    grid-column: 1 / span 2; /* S'étend sur les 2 colonnes */
+    grid-row: 2;    /* 2ème ligne */
+    width: 698px;
+    height: auto;
+    margin-top: -50px; /* Chevauchement de 50px */
+    margin-bottom: 25px;
+}
+.modal-avecactors {
+    grid-column: 1 / span 2; /* S'étend sur les 2 colonnes */
+    grid-row: 3;    /* 3ème ligne (si besoin) */
+}
+
+.modal-info p{
+    font-weight: 600;
+    font-size: 24px;
+}
+.modal-info h2{
+    margin-bottom: 0;
+}
+
+.modal-int-realise,
+.modal-int-actors{
+    font-weight: 400;
+}
+.modal-director{
+    font-weight: 300;
+}
+
+.modal-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.modal-int-realise,
+.modal-director{
+    display: block; /* Chaque span prendra toute la largeur disponible et passera à la ligne */
+}
+.modal-director {
+    margin-bottom: 1.5em;
+}
+.modal-int-actors,
+.modal-actors{
+    display: block;
+}
+
+
+
+/* ============================================= */
+/* STYLE DU PIED DE MODALE (bouton Fermer)        */
+/* ============================================= */
+.modal-footer {
+    margin-top: 1.5em;
+    padding: 15px 0;           /* Espacement vertical */
+    text-align: center;         /* Aligne le bouton au centre */
+    border-top: 1px solid #eee; /* Ligne de séparation */
+}
+
+.modal-footer .close-button {
+    background-color: rgba(250,11,11,11); /* Couleur rouge pour le bouton */
+    color: white;              /* Texte blanc */
+    border: none;              /* Pas de bordure */
+    padding: 2px 4px 2px 4px;     /* Espacement interne */
+    border-radius: 25px;         /* Coins arrondis */
+    cursor: pointer;           /* Curseur "main" au survol */
+
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.modal-footer .close-button:hover {
+    background-color: #c42838; /* Couleur plus foncée au survol */
+}
+
+
+
+/* Tablette (écran moyen) et mobile */
+@media (max-width: 788px) {
+    .modal-body {
+        display: grid;
+        grid-template-columns: 1fr; /* 1 colonne */
+        grid-template-rows: auto auto auto auto; /* 4 lignes */
+        gap: 1rem; /* Espacement entre les blocs en colonne */
+        text-align: left;
+        margin: 5% 5% 5% 5%;
+    }
+
+    /* Ordre personnalisé */
+    .modal-info {
+        grid-column: 1;
+        grid-row: 1;
+        width: 100%; /* Largeur totale */
+    }
+
+    .modal-inforesume {
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 0;
+        width: 698px;
+        height: 457px;
+    }
+    .modal-director {
+        margin-bottom: 0;
+    }
+    .modal-poster {
+        grid-column: 1;
+        grid-row: 3;
+    }
+    .modal-avecactors {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    /* Réinitialise les hauteurs fixes */
+    .modal-info,
+    .modal-poster,
+    .modal-inforesume,
+    .modal-avecactors {
+        width: 100%;
+        height: auto;
+    }
+    .modal-poster img {
+        width: 100%;
+        height: auto;
+    }
+}

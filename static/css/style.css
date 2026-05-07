@@ -1,0 +1,345 @@
+/* Réinitialisation basique */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0;
+    line-height: 1;
+    vertical-align: middle;
+    padding-left: 10%;  /* 10% de la largeur de l'écran */
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    max-width: 1054px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: rgb(97, 120, 127,1);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+    width: 837px;
+    height: 122px;
+}
+section{
+    margin-bottom: 2em;
+}
+.groupe1{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center; /*vertical*/
+}
+h1{
+    font-weight: 300; /* for Oswald police 300 : Light 400 : Regular (normal) 700 : Bold */
+    font-size: 40px;
+    color: white;
+
+}
+h2{
+    font-weight: 600;
+    font-size: 48px;
+    margin-bottom: 1em;
+    vertical-align: middle;
+}
+
+p{
+    font-size: 28px;
+    font-weight: 200;
+    vertical-align: middle;
+}
+.best-movie-section{
+    margin-bottom: 2em;
+}
+
+
+.best-movie-card{
+    display: flex;
+    border: 2px solid rgba(0,0,0,1);
+    border-radius: 5px;
+    overflow: hidden; /* Empêche le contenu de dépasser */
+    padding:1%;
+    height: 369px;
+    width: 835px;
+    object-fit: cover;
+    gap: 1em;
+}
+
+.movie-poster img{
+    /*width: 334px;*/ /* Largeur par défaut pour PC */
+    /*height: 100%;*/ /* La hauteur s'ajuste automatiquement selon le ratio */
+    width: 227px;
+    height: 334px;
+    /*object-fit: cover;*/ /* Assure que l'image couvre bien la zone tout en gardant le ratio */
+    object-fit: contain;/*L’image s’adapte pour tenir dans le conteneur sans être coupée.
+Conserve toute l’image, mais peut laisser des espaces vides.
+*/
+}
+
+.movie-info{
+    flex-direction: column; /* Affiche les éléments en colonne */
+    align-items: center;
+    justify-content: flex-start;/* Aligne les éléments à gauche */
+}
+
+.movie-button {
+    display: inline-block; /* Nécessaire pour text-align */
+    background-color: rgba(250,11,11,1);
+    color: white;
+    padding: 2px 4px;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: auto; /* Pousse le bouton vers le bas */
+    align-self: flex-end; /* Al*/
+
+}
+
+
+/*--------Section les films les mieux notés----*/
+
+/* Grille de films */
+.top-movies-grid{
+    display: grid;
+    /*border: 2px solid rgba(0,0,0,1);*/
+    grid-template-columns: repeat(3, auto);
+    gap: 1em; /* Espacement vertical entre les lignes (si plusieurs lignes) */
+    max-width: 100%;
+    justify-content: space-between; /* Répartit les cartes sur toute la largeur */
+    padding: 1%; /* Ajoute des marges de 1% à gauche et à droite */
+}
+
+/* Carte de film */
+.top-movies-card {
+    max-width: 260px; /* Limite la largeur maximale pour éviter que les cartes ne deviennent trop larges */
+    /*max-height: 252px;*/
+    /*background-color: white;*/
+    /*border: 1px solid #ddd;
+    border-radius: 5px;*/
+    /*overflow: hidden;*/
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative; /* Nécessaire pour le positionnement absolu des enfants */
+}
+
+.top-movies-poster{
+    position: relative; /* Permet de positionner .movie-info par rapport à lui */
+}
+.top-movies-poster img {
+    width: 259px;
+    height: 259px;
+    object-fit: contain;
+    display: block;
+}
+
+.top-movies-info {
+    position: absolute; /* Positionnement absolu par rapport à .movie-poster */
+    top: 10%; /* Aligné en haut */
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.6); /* Fond noir avec 60% d'opacité */
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Affiche les éléments en colonne */
+    align-items: center;
+    justify-content: flex-start;/* Aligne les éléments à gauche */
+    height: 100px; /* Hauteur fixe pour le bloc (ajuste selon tes besoins) */
+}
+/* Titre du film */
+.top-movies-info h3 {
+    font-size: 24px;
+    color: white;
+    font-weight: 600;
+    /*text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); *//* Ombre pour améliorer le contraste */
+    align-self: flex-start; /* Aligne le titre à gauche */
+    margin: 0;
+}
+
+
+.top-movies-button {
+    display: inline-block;
+    background-color: rgba(45,44,44,1);
+    padding: 2px 4px 2px 10px;
+    border-radius: 25px;
+    gap: 10px;
+    margin-top: auto; /* Pousse le bouton vers le bas */
+    align-self: flex-end; /* Al*/
+
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+}
+
+/* Bouton "Voir plus" */
+.voir-plus-button {
+    display: none; /* Masqué par défaut sur PC */
+    background-color: rgba(250,11,11,1);
+    color: white;
+    padding: 2px 4px 2px 10px;
+    font-size: 20px;
+    border-radius: 25px;
+    margin: auto;
+    width: 214px;
+    height: 36px;
+}
+
+/* Cartes cachées par défaut */
+.movie-card.hidden {
+    display: none; /* Masque les cartes cachées */
+}
+
+/* Bouton "Voir moins" */
+.voir-moins-button {
+    display: none; /* Masqué par défaut sur PC */
+    background-color: rgba(250,11,11,1);
+    color: white;
+    padding: 2px 4px 2px 10px;
+    font-size: 20px;
+    border-radius: 25px;
+    margin: auto;
+    width: 214px;
+    height: 36px;
+}
+
+
+
+
+/* Tablette (écran moyen) */
+@media (max-width: 788px) {
+    header {
+        width: 619px;
+        height: 137px;
+    }
+
+    .movie-info h3 {
+        margin-top: 0;
+        font-size: 20px;
+        color: #333;
+    }
+
+    p{
+        font-size: 24px;
+    }
+
+    .best-movie-card {
+        height: 271px;
+        width: 618px;
+    }
+    .movie-poster img{
+        width: 168px;
+        height: 246px;
+        object-fit: contain;
+    }
+
+    /*--------Section les films les mieux notés----*/
+    /* Grille de films */
+    .top-movies-grid {
+        display: grid;
+        /*border: 2px solid rgba(0,0,0,1);*/
+        grid-template-columns: repeat(2, auto);
+    }
+    .top-movies-card {
+        max-width: 295px; /* Limite la largeur maximale pour éviter que les cartes ne deviennent trop larges */
+        /*max-height: 288px;*/
+    }
+
+    .top-movies-poster img {
+        width: 295px;
+        height: 286px;
+    }
+
+    /* Masque les cartes cachées sur tablette */
+    .hidden-on-tablet-and-mobile {
+        display: none;
+    }
+
+    /* Affiche le bouton "Voir plus" sur tablette */
+    .voir-plus-button, .voir-moins-button {
+        display: block;
+    }
+}
+
+    /* Mobile (petit écran) */
+    @media (max-width: 456px) {
+        body {
+            display: flex;
+            flex-direction: column; /* Aligne les éléments en colonne */
+            align-items: center; /* Centre horizontalement */
+            justify-content: center; /* Centre verticalement (si le body a une hauteur définie) */
+            text-align: center; /* Centre aussi le texte (pour les éléments en ligne) */
+        }
+        header {
+            width: 329px;
+            height: 137px;
+        }
+        header h1 {
+            display: none; /* Masque le titre h1 dans l'en-tête */
+        }
+
+        h2{
+            width: 274px;
+            height: 47px;
+            font-size: 32px;
+            text-align: center; /* Centre le texte (optionnel) */
+            margin: 0 auto;
+        }
+
+        p{
+            font-size: 16px;
+        }
+
+        .best-movie-card {
+            flex-direction: column; /* Passe en colonne sur mobile */
+            height: 463px;
+            width: 329px;
+        }
+
+        .movie-poster img {
+            height: 241px;
+            width: 298px;
+            object-fit: contain;
+        }
+
+
+        /*--------Section les films les mieux notés----*/
+        /* Grille de films */
+        .top-movies-grid {
+            display: grid;
+            /*border: 2px solid rgba(0,0,0,1);*/
+            grid-template-columns: repeat(1, auto);
+        }
+
+        .top-movies-card {
+            max-width: 329px; /* Limite la largeur maximale pour éviter que les cartes ne deviennent trop larges */
+            /*max-height: 329px;*/
+        }
+
+        .top-movies-poster img {
+            width: 329px;
+            height: 319px;
+        }
+
+        /* Masque les cartes visibles uniquement sur tablette et PC */
+        .visible-on-tablet-and-desktop {
+            display: none;
+        }
+
+        /* Masque les cartes cachées sur mobile */
+        .hidden-on-tablet-and-mobile {
+            display: none;
+        }
+
+        /* Affiche le bouton "Voir plus" sur mobile */
+        .voir-plus-button, .voir-moins-button {
+            display: block;
+        }
+    }
