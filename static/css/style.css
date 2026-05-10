@@ -84,21 +84,30 @@ Conserve toute l’image, mais peut laisser des espaces vides.
 }
 
 .movie-info{
+    display: flex;
     flex-direction: column; /* Affiche les éléments en colonne */
     align-items: center;
     justify-content: flex-start;/* Aligne les éléments à gauche */
+    padding-right: 1em; /* Ajoute une marge intérieure à droite */
 }
 
 .movie-button {
-    display: inline-block; /* Nécessaire pour text-align */
+    /*display: inline-block;*/ /* Nécessaire pour text-align */
+    display: flex; /*espacement, alignement dans un conteneur fonctionne avec flex*/
     background-color: rgba(250,11,11,1);
     color: white;
     padding: 2px 4px;
     border-radius: 25px;
     font-weight: 500;
     font-size: 20px;
-    margin-top: auto; /* Pousse le bouton vers le bas */
+    /*margin-top: auto;*/ /* Pousse le bouton vers le bas */
+    margin-top: 1em;
     align-self: flex-end; /* Al*/
+
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    width: 160px;
+    height: 68px;
 
 }
 
@@ -240,7 +249,11 @@ Conserve toute l’image, mais peut laisser des espaces vides.
         object-fit: contain;
     }
 
-    /*--------Section les films les mieux notés----*/
+    .movie-button{
+        width: 123px;
+        height: 49px;
+    }
+        /*--------Section les films les mieux notés----*/
     /* Grille de films */
     .top-movies-grid {
         display: grid;
@@ -298,6 +311,12 @@ Conserve toute l’image, mais peut laisser des espaces vides.
 
         p{
             font-size: 16px;
+        }
+
+        .movie-button{
+            width: 91px;
+            height: 40px;
+            align-self: center; /* Al*/
         }
 
         .best-movie-card {

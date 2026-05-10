@@ -48,6 +48,9 @@
  */
 function createModal(modalId, title, yearGenre, ratingDuration, imdbScore,
                      boxOffice, posterUrl, director, summary, actors) {
+
+    /* Initialisation dans src avec l'URL static/images/notfound.jpg. Ainsi, si l'URL de l'affiche du
+film est vide ou invalide, l'image par défaut sera affichée.*/
     const modalHTML = `
         <div id="${modalId}" class="modal">
             <div class="modal-content">
@@ -61,7 +64,7 @@ function createModal(modalId, title, yearGenre, ratingDuration, imdbScore,
                         <p class="modal-boxoffice">Recettes au box-office: <span id="${boxOffice}" class="modal-box-office"></span></p>
                     </div>
                     <div class="modal-poster">
-                        <img id="${posterUrl}" class="modal-poster-img" src="" alt="Affiche du film"
+                        <img id="${posterUrl}" class="modal-poster-img" src="static/images/notfound.jpg" alt="Affiche du film"
                              onerror="this.onerror=null; this.src='static/images/notfound.jpg';">
                     </div>
                     <div class="modal-inforesume">
