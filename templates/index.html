@@ -5,22 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JustStreamIt - Accueil</title>
 
-    <!--Chaque navigateur essaie de charger un fichier favicon.ico à la racine du site pour afficher une icône dans l’onglet.
-    Comme ce fichier n’existe pas, Django retourne une erreur 404. Cela n’affecte pas le fonctionnement du site ou css
+    <!--Chaque navigateur essaie de charger un fichier favicon.ico à la racine du site pour afficher une icône dans
+    l’onglet. Comme ce fichier n’existe pas, Django retourne une erreur 404. Cela n’affecte pas le fonctionnement du site ou css
     ici pour ignorer l'erreur : création d'un fichier vide ocmovies_frontend/static/favicon.ico et indication ci-dessous dans le html.
     -->
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/listederoulante.css">
-    <link rel="stylesheet" href="static/css/modal.css">
-    <script src="static/js/formatfunction.js" defer></script>
-    <script src="static/js/btndetails.js" defer></script>
-    <script src="static/js/topratemovies.js" defer></script>
-    <script src="static/js/modal.js" defer></script>
-    <script src="static/js/modalbis.js" defer></script>
-    <script src="static/js/modal2.js" defer></script>
-    <script src="static/js/categorie.js" defer></script>
-    <script src="static/js/categorie_autre.js" defer></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/listederoulante.css">
+    <link rel="stylesheet" href="/static/css/modal.css">
+    <script src="/static/js/formatfunction.js" defer></script>
+
+    <!--Configuration des écouteurs pour les boutons "Voir plus" et "Voir moins" d'une grille de films.-->
+    <script src="/static/js/btndetails.js" defer></script>
+
+    <!--
+    1) Chargement et affichage du meilleur film (meilleur score IMDb) depuis l'API (ligne 1 à ligne 57)
+    2) Chargement et affichage des sept films les mieux notés (score IMDb) depuis l'API (ligne 61 à ligne 143).
+    -->
+    <script src="/static/js/topratemovies.js" defer></script>
+
+    <!--
+    1) Initialisation d'une modale avec ses écouteurs d'événements ouverture/fermeture (ligne 1 à ligne 58)
+    2) Initialisation de toutes les modales de la page et configure les écouteurs pour les boutons "Détails"
+    -->
+    <script src="/static/js/modal.js" defer></script>
+
+    <!--Création d'une modale dans DOM (ce html) pour afficher les détails d'un film.-->
+    <script src="/static/js/modalbis.js" defer></script>
+
+    <!--
+    1) Recuperation du meilleur film (selon le score IMDb) et met à jour les éléments de la modale avec ses détails
+    (ligne 1 à la ligne 66).
+    2) Récupère les films d'une catégorie et met à jour les modales associées.
+    -->
+    <script src="/static/js/modal2.js" defer></script>
+
+    <!--Charge et affiche les six films les mieux notés (score IMDb) d'une catégorie donnée depuis l'API-->
+    <script src="/static/js/categorie.js" defer></script>
+
+    <!--
+    1) choix de la catégorie possible par l'utilisateur (ligne 1 à ligne 141) : charge et affiche les six films les
+    mieux notés (score IMDb) d'une catégorie depuis l'API
+    2) Remplissage d'une liste déroulante avec tous les genres disponibles depuis l'API et Ajout d'un écouteur pour
+    changer de catégorie lorsque l'utilisateur sélectionne un genre (ligne 145 à ligne 207)
+    3) Récupère tous les genres disponibles depuis l'API (ligne 212 à ligne 246)
+    -->
+    <script src="/static/js/categorie_autre.js" defer></script>
 
     <!--
     Paramètre Anti-Cache Pour forcer le navigateur à recharger le CSS à chaque fois,
@@ -46,250 +76,31 @@
     <!-- Section "Meilleur film" -->
     <section class="best-movie-section">
         <h2>Meilleur film</h2>
-        <div class="best-movie-card">
-            <div class="movie-poster">
-                <img src="" alt="Affiche du meilleur film">
-            </div>
-            <div class="movie-info">
-                <h2>Titre du meilleur film</h2>
-                <p>Description courte du meilleur film...</p>
-                <a href="" class="movie-button">Détails</a>
-            </div>
-        </div>
+        <!-- Contenu généré dynamiquement par JavaScript : /static/js/topratemovies.js -->
     </section>
 
     <section class="top-rated-movies">
         <h2>Films les mieux notés</h2>
-        <div class="top-movies-grid">
-            <!-- Carte 1 : 2ème meilleur film-->
-            <article class="top-movies-card visible-on-all">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=3" alt="Affiche du deuxième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film2</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 2 : 3ème meilleur film-->
-            <article class="top-movies-card visible-on-all">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=4" alt="Affiche du troisième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film3</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 3 : 4ème meilleur film-->
-            <article class="top-movies-card visible-on-tablet-and-desktop">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=5" alt="Affiche du quatrième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film4</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 4 : 5ème meilleur film-->
-            <article class="top-movies-card visible-on-tablet-and-desktop">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=6" alt="Affiche du cinquième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film5</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 5 : 6ème meilleur film-->
-            <article class="top-movies-card hidden-on-tablet-and-mobile">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=7" alt="Affiche du sixième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film6</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 6 : 7ème meilleur film-->
-            <article class="top-movies-card hidden-on-tablet-and-mobile">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=8" alt="Affiche du septième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film7</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-        </div>
-            <!-- Bouton "Voir plus" -->
-        <button id="voir-plus" class="voir-plus-button">Voir plus</button>
-        <button id="voir-moins" class="voir-moins-button" style="display: none;">Voir moins</button>
+        <!-- Contenu généré dynamiquement par JavaScript : /static/js/topratemovies.js -->
     </section>
 
     <!-- Section "Catégories" -->
-        <section class="top-rated-movies-cat1">
-        <h2>Mystery</h2>
-        <div class="top-movies-grid">
-            <!-- Carte 1 : 2ème meilleur film-->
-            <article class="top-movies-card visible-on-all">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=9" alt="Affiche du deuxième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film2</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 2 : 3ème meilleur film-->
-            <article class="top-movies-card visible-on-all">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=10" alt="Affiche du troisième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film3</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 3 : 4ème meilleur film-->
-            <article class="top-movies-card visible-on-tablet-and-desktop">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=11" alt="Affiche du quatrième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film4</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 4 : 5ème meilleur film-->
-            <article class="top-movies-card visible-on-tablet-and-desktop">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=12" alt="Affiche du cinquième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film5</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 5 : 6ème meilleur film-->
-            <article class="top-movies-card hidden-on-tablet-and-mobile">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=13" alt="Affiche du sixième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film6</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 6 : 7ème meilleur film-->
-            <article class="top-movies-card hidden-on-tablet-and-mobile">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=14" alt="Affiche du septième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film7</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-        </div>
-            <!-- Bouton "Voir plus" -->
-    <button id="voir-pluscat1" class="voir-plus-button">Voir plus</button>
+    <section class="top-rated-movies-cat1">
+        <!-- Contenu généré dynamiquement par JavaScript : /static/js/categorie.js-->
+        <h2>Catégorie 1</h2>
     </section>
-
-
 
     <!-- Section "Catégorie 2" -->
-        <section class="top-rated-movies-cat2">
+    <section class="top-rated-movies-cat2">
         <h2>Catégorie 2</h2>
-        <div class="top-movies-grid">
-            <!-- Carte 1 : 2ème meilleur film-->
-            <article class="top-movies-card visible-on-all">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=9" alt="Affiche du deuxième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film2</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 2 : 3ème meilleur film-->
-            <article class="top-movies-card visible-on-all">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=10" alt="Affiche du troisième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film3</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 3 : 4ème meilleur film-->
-            <article class="top-movies-card visible-on-tablet-and-desktop">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=11" alt="Affiche du quatrième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film4</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 4 : 5ème meilleur film-->
-            <article class="top-movies-card visible-on-tablet-and-desktop">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=12" alt="Affiche du cinquième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film5</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 5 : 6ème meilleur film-->
-            <article class="top-movies-card hidden-on-tablet-and-mobile">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=13" alt="Affiche du sixième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film6</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-
-            <!-- Carte 6 : 7ème meilleur film-->
-            <article class="top-movies-card hidden-on-tablet-and-mobile">
-                <div class="top-movies-poster">
-                    <img src="https://picsum.photos/300/450?random=14" alt="Affiche du septième meilleur film">
-                </div>
-                <div class="top-movies-info">
-                    <h3>Film7</h3>
-                    <a href="#" class="top-movies-button">Détails</a>
-                </div>
-            </article>
-        </div>
-            <!-- Bouton "Voir plus" -->
-    <button id="voir-pluscat2" class="voir-plus-button">Voir plus</button>
+        <!-- Contenu généré dynamiquement par JavaScript : /static/js/categorie.js -->
     </section>
 
-
-
     <!-- Section "Catégorie autre" -->
-    <section class="top-rated-movies-cat3"></section>
-    <!-- Pied de page -->
-    <!--<footer>
-        <p></p>
-    </footer>-->
+    <section class="top-rated-movies-cat3">
+        <h2>Catégorie 3 (choix utilisateur)</h2>
+        <!-- Contenu généré dynamiquement par JavaScript : /static/js/categorie_autre.js -->
+    </section>
 
 </body>
 </html>

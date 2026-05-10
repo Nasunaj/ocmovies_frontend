@@ -263,8 +263,11 @@ Conserve toute l’image, mais peut laisser des espaces vides.
     }
 
     /* Affiche le bouton "Voir plus" sur tablette */
-    .voir-plus-button, .voir-moins-button {
+    .voir-plus-button {
         display: block;
+    }
+    .voir-moins-button {
+        display: none;
     }
 }
 
@@ -339,7 +342,10 @@ Conserve toute l’image, mais peut laisser des espaces vides.
         }
 
         /* Affiche le bouton "Voir plus" sur mobile */
-        .voir-plus-button, .voir-moins-button {
+        .voir-plus-button {
             display: block;
+        }
+        .voir-moins-button {
+            display: none;
         }
     }

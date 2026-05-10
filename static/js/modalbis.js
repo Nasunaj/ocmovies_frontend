@@ -1,4 +1,53 @@
-function createModal(modalId, title, yearGenre, ratingDuration, imdbScore, boxOffice, posterUrl, director, summary, actors) {
+/**
+ * Crée une modale pour afficher les détails d'un film.
+ * La modale est ajoutée au DOM avec un ID unique et des éléments vides (à remplir ultérieurement).
+ * Les écouteurs pour ouvrir/fermer la modale sont initialisés via `initModal`.
+ *
+ * @param {string} modalId - ID unique de la modale (ex: "movie-modal-1").
+ * @param {string} title - ID pour l'élément `<h2>` du titre du film (ex: "modal-title-1").
+ * @param {string} yearGenre - ID pour l'élément `<p>` de l'année et du genre (ex: "modal-year-genre-1").
+ * @param {string} ratingDuration - ID pour l'élément `<p>` de la note et de la durée (ex: "modal-rating-duration-1").
+ * @param {string} imdbScore - ID pour l'élément `<span>` du score IMDb (ex: "modal-imdb-score-1").
+ * @param {string} boxOffice - ID pour l'élément `<span>` des recettes au box-office (ex: "modal-box-office-1").
+ * @param {string} posterUrl - ID pour l'élément `<img>` de l'affiche (ex: "modal-poster-1").
+ * @param {string} director - ID pour l'élément `<span>` du réalisateur (ex: "modal-director-1").
+ * @param {string} summary - ID pour l'élément `<p>` du résumé (ex: "modal-summary-1").
+ * @param {string} actors - ID pour l'élément `<span>` des acteurs (ex: "modal-actors-1").
+ *
+ * @description
+ * 1) Crée une structure HTML pour une modale avec :
+ *   - Un bouton de fermeture "×" (classe `.close-modal`).
+ *   - Un titre (`<h2>`), une année/genre (`<p>`), une note/durée (`<p>`), un score IMDb (`<span>`), et des recettes (`<span>`).
+ *   - Une affiche de film (`<img>`) avec un fallback en cas d'erreur.
+ *   - Un réalisateur (`<span>`), un résumé (`<p>`), et des acteurs (`<span>`).
+ *   - Un bouton "Fermer" dans le pied de modale (classe `.close-button`).
+ * 2) Appelle `initModal(modalId)` pour initialiser les écouteurs de la modale.
+ *
+ * @depends
+ * - La fonction `initModal` doit être définie.
+ *
+ * @example
+ * // Créer une modale pour le film "Inception"
+ * createModal(
+ *     "movie-modal-inception",
+ *     "modal-title-inception", "modal-year-genre-inception", "modal-rating-duration-inception",
+ *     "modal-imdb-score-inception", "modal-box-office-inception", "modal-poster-inception",
+ *     "modal-director-inception", "modal-summary-inception", "modal-actors-inception"
+ * );
+ *
+ * @example
+ * // Créer 6 modales pour une catégorie (dans le cas des 6 meilleurs films)
+ * for (let i = 0; i < 6; i++) {
+ *     createModal(
+ *         `movie-modal-cat1-${i}`,
+ *         `modal-title-cat1-${i}`, `modal-year-genre-cat1-${i}`, `modal-rating-duration-cat1-${i}`,
+ *         `modal-imdb-score-cat1-${i}`, `modal-box-office-cat1-${i}`, `modal-poster-cat1-${i}`,
+ *         `modal-director-cat1-${i}`, `modal-summary-cat1-${i}`, `modal-actors-cat1-${i}`
+ *     );
+ * }
+ */
+function createModal(modalId, title, yearGenre, ratingDuration, imdbScore,
+                     boxOffice, posterUrl, director, summary, actors) {
     const modalHTML = `
         <div id="${modalId}" class="modal">
             <div class="modal-content">
