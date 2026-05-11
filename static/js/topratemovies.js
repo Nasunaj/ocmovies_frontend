@@ -37,6 +37,7 @@ fetch(bestMovieUrl)
                 // Construction du HTML du film (ICI, bestMovie est accessible)
                 const movieHTML = `   
                     <section class="best-movie-section">
+                        <h2>Meilleur film</h2>
                         <div class="best-movie-card">
                             <div class="movie-poster">
                                 <img src=${bestMovie.image_url} alt=${bestMovie.title}

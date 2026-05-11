@@ -1,93 +1,101 @@
-/* ============================================= */
-/* 1. STYLE De la div "Autres:" + LISTE DÉROULANTE */
-/* ============================================= */
+/*-------------------------------------------------
+   Les styles appliqués pour la liste déroulante permettant à l'utilisateur de choisir la catégorie pour laquelle
+   il veut afficher les 6 meilleurs films
+   Remarque : les variables globales sont définies eh haut de la feuille style.css
+  */
+
 .section-header {
-    display: flex;               /* Affiche les éléments enfants en ligne (horizontalement) */
-    align-items: center;         /* Aligne verticalement les éléments au centre */
-    gap: 1em;                    /* Espace entre "Autres:" et la liste déroulante */
-    margin-bottom: 1em;          /* Marge en bas pour espacer du contenu suivant */
+    display: flex;
+    align-items: center; /* Aligne verticalement les éléments au centre */
+    gap: var(--spacing-md);  /* Espace entre "Autres:" et la liste déroulante (1rem = 16px) */
+    margin-bottom: var(--spacing-md); /* Marge en bas */
 }
 
 .section-header h2 {
-    margin: 0;                  /* Supprime les marges par défaut du h2 */
-    white-space: nowrap;        /* Empêche le texte de passer à la ligne */
+    margin: 0;
+    white-space: nowrap; /* Pour epêcher le retour à la ligne */
+    font-size: var(--font-size-xxl);
+    font-weight: 600;
 }
 
-/* ============================================= */
-/* 2. STYLE DU BOUTON DÉROULANT (partie visible)   */
-/* ============================================= */
+/*----------------------------------------------
+bouton
+*/
 .dropdown {
-    position: relative;          /* Permet de positionner le menu déroulant par rapport au bouton */
-    display: inline-block;       /* Affiche le bouton en ligne (pour rester à côté de "Autres:") */
+    position: relative; /* Permet de positionner le menu par rapport au bouton */
+    display: inline-block; /* Pour afficher le bouton en ligne */
 }
 
 .dropdown-toggle {
-    padding: 5%;                /* Espacement interne */
-    background-color: white;     /* Fond blanc */
-    border: 1px solid rgba(0,0,0,1); /* Bordure */
-    cursor: pointer;            /* Curseur "main" au survol */
-    display: flex;               /* Affiche les enfants (texte + icône) en ligne */
-    align-items: center;        /* Aligne verticalement l'icône et le texte */
+    padding: 5%; /* Espacement interne (relatif à la largeur du parent) */
+    background-color: var(--text-light); /* Fond blanc */
+    border: 1px solid rgba(0, 0, 0, 1);
+    cursor: pointer; /* Curseur "main" au survol */
+    display: flex;
+    align-items: center; /* Pour aligner verticalement l'icône et le texte */
     justify-content: space-between; /* Espace entre le texte et l'icône */
-    text-align: left;           /* Aligne le texte à gauche */
+    text-align: left; /* Pour aligne le texte à gauche */
     width: 404px;
     height: 78px;
-    font-size: 36px;
+    font-size: var(--font-size-xl);
     font-weight: 600;
 }
 
-/* ============================================= */
-/* 3. STYLE DU MENU DÉROULANT */
-/* ============================================= */
+/*-----------------------------------------------
+  Menu déroulant*/
 .dropdown-menu {
-    display: none;               /* Masqué par défaut */
-    position: absolute;          /* Positionne le menu par rapport au parent (.dropdown) */
-    background-color: white;     /* Fond blanc */
-    width: 404px;                /* Largeur fixe */
-    max-height: 471px;           /* Hauteur maximale */
-    overflow-y: auto;           /* Barre de défilement verticale si nécessaire */
-    border: 1px solid rgba(0,0,0,1); /* Bordure */
-    z-index: 9000;              /* Place le menu au-dessus des autres éléments */
-    list-style: none;           /* Supprime les puces par défaut des <li> */
-    padding: 5%;                /* Espacement interne */
-    margin: 0;                  /* Supprime les marges */
-    top: 100%;                  /* Positionne le menu juste en dessous du bouton */
-    left: 0;                    /* Aligne à gauche du parent */
-    font-size: 36px;
+    display: none;
+    position: absolute; /* Pour positionne le menu par rapport au parent (.dropdown) */
+    background-color: var(--text-light); /* Fond blanc */
+    width: 404px;
+    max-height: 471px;
+    overflow-y: auto; /* Barre de défilement verticale si nécessaire */
+    border: 1px solid rgba(0, 0, 0, 1);
+    z-index: 9000;  /* Place le menu au-dessus des autres éléments */
+    list-style: none; /* Supprime les puces des <li> */
+    padding: 5%;/* Espacement interne (relatif) */
+    margin: 0;
+    top: 100%;/* Positionne le menu juste en dessous du bouton */
+    left: 0;
+    font-size: var(--font-size-xl); /* 36px */
     font-weight: 600;
 }
 
-/* ============================================= */
-/* 4. STYLE DES ÉLÉMENTS DU MENU DÉROULANT */
-/* ============================================= */
+/* -------------------------------------------
+ Les éléments du menus déroulants
+*/
 .dropdown-menu li {
-    display: flex;              /* Active Flexbox pour aligner les enfants horizontalement */
+    display: flex;
     justify-content: space-between; /* Espace les enfants aux extrémités */
-    border-bottom: 1px solid rgba(0,0,0,1); /* Ligne de séparation */
+    border-bottom: 1px solid rgba(0, 0, 0, 1); /* Ligne de séparation */
     align-items: center;
-    padding: 5% 0% 5% 0%;
+    padding: 5% 0; /* Espacement vertical (5% 0) */
 }
 
 .dropdown-menu li:last-child {
-    border-bottom: none;         /* Supprime la bordure pour le dernier élément */
+    border-bottom: none; /* Suppression de la bordure pour le dernier élément */
 }
 
 .dropdown-menu li a {
-    color: rgba(0,0,0,1);        /* Couleur du texte des liens */
-    text-decoration: none;      /* Supprime le soulignement des liens */
-    display: block;             /* Occupe toute la largeur du <li> */
-    width: 100%;                /* Largeur à 100% pour remplir le <li> */
+    color: var(--text-dark); /* Couleur du texte des liens (noir) */
+    text-decoration: none; /* Suppression du soulignement */
+    display: block; /* Occupe toute la largeur du <li> */
+    width: 100%;
 }
 
 /* Style au survol d'un élément du menu */
 .dropdown-menu li a:hover {
-    background-color: #f5f5f5;
+    background-color: #f5f5f5;  /* Fond gris très clair */
 }
 
 
-/* ============================================= */
-/* Style pour les écrans tactiles (même si grands) */
-/* ============================================= */
+/*____________________________________
+Distinction selon le type d'écran (tactile ou non tactile) : car dans la liste déroulante la sélection avec la
+'souris' ne fonctionne pas bien sur les tactile*/
+
+/* ---------------------------------------
+  Écrans tactiles (pointer coarse)
+*/
 @media (pointer: coarse) {
     /* Désactive le hover pour les écrans tactiles */
     .dropdown:hover .dropdown-menu {
@@ -99,24 +107,22 @@
         display: block;
     }
 
-
-        /* Style du menu pour les écrans tactiles */
+    /* Style du menu pour les écrans tactiles */
     .dropdown-menu {
-        position: fixed;       /* Reste fixe même au scroll */
-        width: 90vw;           /* Largeur adaptative */
-        max-width: 404px;      /* Largeur max */
-        max-height: 50vh;      /* Hauteur maximale */
+        position: fixed; /* Reste fixe même au scroll */
+        width: 90vw; /* Largeur adaptative (90% de la largeur de la fenêtre) */
+        max-width: 404px; /* Largeur max (même que le bouton) */
+        max-height: 50vh; /* Hauteur maximale (50% de la hauteur de la fenêtre) */
         top: auto;
-        bottom: 0;             /* Colle le menu en bas de l'écran */
+        bottom: 0; /* Colle le menu en bas de l'écran */
         left: 50%;
-        transform: translateX(-50%); /* Centre le menu */
-        overflow-y: auto;     /* Barre de défilement verticale */
+        transform: translateX(-50%); /* Centre le menu horizontalement */
+        overflow-y: auto; /* Barre de défilement verticale */
     }
 }
 
-/* ============================================= */
-/* Style pour les écrans non tactiles (souris)   */
-/* ============================================= */
+/* -----------------------------------------------
+   Écrans non tactiles (pointer fine)*/
 @media (pointer: fine) {
     /* Utilise le hover pour les écrans avec souris */
     .dropdown:hover .dropdown-menu {
@@ -133,21 +139,22 @@
     }
 }
 
-
-/* Smartphone (écrans ≤ 480px) */
+/*-----------------------------------------------
+ ADAPTATION POUR pour les écrans dont la largeur est inférieure à  788px (mobiles et tablettes).
+ Notamment passage en colonne*/
 @media (max-width: 788px) {
     .section-header {
-        flex-direction: column; /* Passe en colonne */
-        align-items: flex-start; /* Aligne à gauche */
-        gap: 0.5em; /* Espace entre le titre et le dropdown */
+        flex-direction: column; /* Passage en colonne */
+        align-items: flex-start; /* Alignement à gauche */
+        gap: 0.5rem; /* Espacement réduit entre le titre et le dropdown */
     }
 
     .dropdown {
-        width: 100%; /* Prend toute la largeur */
+        width: 100%;
     }
 
     .dropdown-toggle {
-        width: 100%; /* Largeur à 100% */
+        width: 100%;
         flex-direction: row; /* Garde le texte et l'icône en ligne */
         justify-content: space-between; /* Espace entre texte et icône */
     }

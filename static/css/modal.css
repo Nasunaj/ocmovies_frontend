@@ -1,36 +1,34 @@
-/* ============================================= */
-/* STYLE DE LA FENÊTRE MODALE (masquée par défaut)  */
-/* ============================================= */
+/*-----------------------------------------------
+ Style de la fenêtre modale qui est masquée par défaut. */
+
 .modal {
-    display: none;               /* Masque la modale par défaut */
-    position: fixed;             /* Reste fixe même au scroll */
-    z-index: 2000;               /* Au-dessus de tout (valeur élevée) */
+    display: none;
+    position: fixed;
+    z-index: 2000;
     left: 0;
     top: 0;
-    width: 100%;                /* Prend toute la largeur de l'écran */
-    height: 100%;               /* Prend toute la hauteur de l'écran */
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent noir */
-    overflow: auto;             /* Permet de scroller si le contenu est trop grand */
+    overflow: auto; /* Permet de scroller si le contenu est trop grand */
 }
 
-/* ============================================= */
-/* STYLE DU CONTENU DE LA MODALE                */
-/* ============================================= */
+/*-----------------------------------------------
+Contenu de la modale*/
 .modal-content {
-    background-color: white;    /* Fond blanc pour la modale */
-    margin: 5% auto;            /* Centre verticalement et horizontalement */
-    padding: 20px;              /* Espacement interne */
-    border-radius: 5px;         /* Coins arrondis */
-    width: 80%;                 /* Largeur relative à l'écran */
+    background-color: var(--text-light); /* Fond blanc */
+    margin: 5% auto;            /* Centrage verticalement et horizontalement */
+    padding:  var(--spacing-md); /* Espacement interne */
+    border-radius: var(--border-radius-sm); /* Coins arrondis */
+    width: 80%;/* Largeur relative à l'écran */
     max-width: 800px;           /* Largeur maximale */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Ombre pour un effet "flottant" */
-    position: relative;         /* Permet de positionner le bouton de fermeture */
-    overflow-y: auto;           /* Active le défilement vertical si le contenu dépasse */
+    position: relative; /* Permet de positionner le bouton de fermeture */
+    overflow-y: auto; /* Active le défilement vertical si le contenu dépasse */
 }
 
-/* ============================================= */
-/* STYLE DU BOUTON DE FERMETURE (×)              */
-/* ============================================= */
+/*-----------------------------------------------
+Bouton de fermeture : x */
 .close-modal {
     display: none;
     position: absolute;         /* Positionne le bouton en haut à droite */
@@ -38,21 +36,19 @@
     top: 10px;
     font-size: 3.5em;            /* Taille du symbole × */
     font-weight: bold;
-    color: red;                /* Couleur rouge */
+    color: var(--secondary-bg);                /* Couleur rouge */
     width: 32px;
     height: 32px;
     cursor: pointer;            /* Curseur "main" au survol */
 }
 
 .close-modal:hover {
-    color: #333;                /* Couleur plus foncée au survol */
+    color: var(--text-dark); /* Couleur plus foncée au survol */
 }
 
-/* ============================================= */
-/* STYLE DU CORPS DE LA MODALE (image + infos)    */
-/* ============================================= */
+/*----------------------------------------------
+Corps de la modale (image et infos)*/
 .modal-content {
-    /* Garde tes styles existants */
     overflow-y: auto; /* Active le scroll vertical si le contenu dépasse */
     max-height: 90vh; /* Limite la hauteur à 90% de la hauteur de l'écran */
 }
@@ -64,7 +60,7 @@
     /* 2 lignes : 1 pour les infos/poster, 1 pour le résumé/acteurs */
     grid-template-rows: auto auto;
     /*gap: 1rem;*/ /* Espacement entre les blocs */
-    column-gap: 20px; /* Espacement horizontal entre les colonnes */
+    column-gap: var(--spacing-md); /* Espacement horizontal entre les colonnes */
     width: fit-content; /* Largeur totale = 423px + 227px + column-gap */
 
 
@@ -72,13 +68,13 @@
 
 /* Positionnement des blocs */
 .modal-info {
-    grid-column: 1; /* 1ère colonne (largeur flexible) */
-    grid-row: 1;    /* 1ère ligne */
-    width: 423px; /* Largeur du premier bloc (exemple : 60% de la largeur du conteneur) */
-    hight: 359px;
+    grid-column: 1;/* 1ère colonne (largeur flexible) */
+    grid-row: 1;/* 1ère ligne */
+    width: 423px;
+    height: 359px;
 }
 .modal-poster {
-    grid-column: 2; /* 2ème colonne (227px) */
+    grid-column: 2; /* 2ème colonne */
     grid-row: 1;    /* 1ère ligne */
     width: 227px;
     height: 334px;
@@ -98,12 +94,13 @@
 
 .modal-info p{
     font-weight: 600;
-    font-size: 24px;
+    font-size: var(--font-size-lg);
 }
 .modal-info h2{
     margin-bottom: 0;
 }
 
+/* Pour les labels et valeurs */
 .modal-int-realise,
 .modal-int-actors{
     font-weight: 400;
@@ -124,7 +121,7 @@
     display: block; /* Chaque span prendra toute la largeur disponible et passera à la ligne */
 }
 .modal-director {
-    margin-bottom: 1.5em;
+    margin-bottom: var(--spacing-lg);
 }
 .modal-int-actors,
 .modal-actors{
@@ -133,26 +130,25 @@
 
 
 
-/* ============================================= */
-/* STYLE DU PIED DE MODALE (bouton Fermer)        */
-/* ============================================= */
+/*------------------------------------------------
+Bouton de fermeture (pied de modale) : texte 'Fermer'*/
 .modal-footer {
-    margin-top: 1.5em;
-    padding: 15px 0;           /* Espacement vertical */
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md) 0;           /* Espacement vertical */
     text-align: center;         /* Aligne le bouton au centre */
     border-top: 1px solid #eee; /* Ligne de séparation */
 }
 
 .modal-footer .close-button {
     background-color: rgba(250,11,11,11); /* Couleur rouge pour le bouton */
-    color: white;              /* Texte blanc */
-    border: none;              /* Pas de bordure */
-    padding: 2px 4px 2px 4px;     /* Espacement interne */
-    border-radius: 25px;         /* Coins arrondis */
-    cursor: pointer;           /* Curseur "main" au survol */
+    color: var(--text-light); /* Texte blanc */
+    border: none;  /* Pas de bordure */
+    padding: var(--spacing-xs) var(--spacing-sm); /* Espacement interne */
+    border-radius: var(--border-radius-lg); /* Coins arrondis */
+    cursor: pointer;  /* Curseur "main" au survol */
 
     font-weight: 500;
-    font-size: 20px;
+    font-size: var(--font-size-md);
     width: 214px;
     height: 36px;
 }
@@ -162,16 +158,19 @@
 }
 
 
-
 /* Tablette (écran moyen) et mobile */
 @media (max-width: 788px) {
     .modal-body {
         display: grid;
         grid-template-columns: 1fr; /* 1 colonne */
         grid-template-rows: auto auto auto auto; /* 4 lignes */
-        gap: 1rem; /* Espacement entre les blocs en colonne */
+        gap: var(--spacing-md); /* Espacement entre les blocs en colonne */
         text-align: left;
         margin: 5% 5% 5% 5%;
+    }
+
+    .modal-title{
+        text-align: left;
     }
 
     /* Ordre personnalisé */
