@@ -5,21 +5,21 @@
  * 1) Effectue une première requête à l'API pour récupérer le film avec le meilleur score IMDb
  * (`/titles/?sort_by=-imdb_score&page_size=1`).
  * 2) Effectue une deuxième requête pour récupérer les **détails complets** du film.
- * 3) Met à jour les éléments HTML de la modale (ID : `modal-poster`, `modal-title`, etc.) avec les données du film.
+ * 3) Met à jour les éléments HTML de la modale (ID : 'modal-poster', 'modal-title', etc.) avec les données du film.
  *
  * @depends
  * - L'API doit être disponible à `http://127.0.0.1:8000/api/v1/titles/`.
  * - Les éléments HTML avec les ID suivants doivent exister dans le DOM :
- *   - `modal-poster` (img)
- *   - `modal-title` (h2)
- *   - `modal-year-genre` (p)
- *   - `modal-rating-duration` (p)
- *   - `modal-imdb-score` (span)
- *   - `modal-box-office` (span)
- *   - `modal-director` (span)
- *   - `modal-summary` (p)
- *   - `modal-actors` (span)
- * - La fonction `formatBoxOffice` doit être définie pour formater les recettes du box-office.
+ *   - 'modal-poster' (img)
+ *   - 'modal-title' (h2)
+ *   - 'modal-year-genre' (p)
+ *   - 'modal-rating-duration' (p)
+ *   - 'modal-imdb-score' (span)
+ *   - 'modal-box-office' (span)
+ *   - 'modal-director' (span)
+ *   - 'modal-summary' (p)
+ *   - 'modal-actors' (span)
+ * - La fonction 'formatBoxOffice' (/static/js/formatfunction.js) doit être définie pour formater les recettes du box-office.
  *
  * @throws {Error} Si la requête API échoue ou si les éléments HTML sont introuvables.
  *
@@ -53,7 +53,7 @@ fetch(bestMovieUrl2)
                 modalPoster.src = data.image_url;
                 modalPoster.alt = data.title;
                 modalTitle.textContent = data.title;
-                modalRatingDuration.textContent = `${data.duration} minutes (${data.countries ? data.countries.join('/') : N/A})`;
+                modalRatingDuration.textContent = `${FrenchRating(data.rated)} - ${data.duration} minutes (${data.countries ? data.countries.join('/') : N/A})`;
                 modalYearGenre.textContent = `${data.year || 'N/A'} - ${data.genres ? data.genres.join(', ') : 'N/A'}`;
                 modalImdbScore.textContent = data.imdb_score;
                 modalBoxOffice.textContent = formatBoxOffice(data.worldwide_gross_income);
@@ -79,31 +79,31 @@ fetch(bestMovieUrl2)
  *
  * @description
  * 1) Récupère la valeur de `page_size` depuis l'URL pour déterminer le nombre de films à traiter.
- * 2) Détermine les indices de départ (`start`) et de fin (`end`) pour la boucle :
- *   - Si `typecat === "top-rated-movies"`, `start = 1` et `end = pageSize`
+ * 2) Détermine les indices de départ ('start') et de fin ('end') pour la boucle :
+ *   - Si 'typecat === "top-rated-movies"', 'start = 1' et 'end = pageSize-1'
  *   (pour ignorer le premier film, déjà affiché ailleurs).
- *   - Sinon, `start = 0` et `end = pageSize - 1`.
- * - Pour chaque film dans la plage `start` à `end` :
- *   - Récupère les détails du film via une requête à `bestMovie.url`.
- *   - Met à jour les éléments HTML de la modale correspondante (ID : `modal-poster${Namecat}-${i}`, etc.) avec les
+ *   - Sinon, 'start = 0' et 'end = pageSize - 1'.
+ * - Pour chaque film dans la plage 'start' à 'end' :
+ *   - Récupère les détails du film via une requête à 'bestMovie.url'.
+ *   - Met à jour les éléments HTML de la modale correspondante (ID : 'modal-poster${Namecat}-${i}', etc.) avec les
  *   données du film.
- * - `Namecat` est utilisé pour générer les ID des éléments HTML :
- *   - Si `typecat === "top-rated-movies"`, `Namecat = ""` (ex: `modal-poster-1`).
+ * - 'Namecat' est utilisé pour générer les ID des éléments HTML :
+ *   - Si 'typecat === "top-rated-movies"', 'Namecat = ""' (ex: `modal-poster-1`).
  *   - Sinon, `Namecat = -${typecat}` (ex: `modal-poster-top-rated-movies-cat1-1`).
  *
  * @depends
- * - L'API doit être disponible à l'URL fournie (`urlmovie`).
+ * - L'API doit être disponible à l'URL fournie ('urlmovie').
  * - Les éléments HTML avec les ID suivants doivent exister dans le DOM pour chaque film (i = indice) :
- *   - `modal-poster${Namecat}-${i}` (img)
- *   - `modal-title${Namecat}-${i}` (h2)
- *   - `modal-year-genre${Namecat}-${i}` (p)
- *   - `modal-rating-duration${Namecat}-${i}` (p)
- *   - `modal-imdb-score${Namecat}-${i}` (span)
- *   - `modal-box-office${Namecat}-${i}` (span)
- *   - `modal-director${Namecat}-${i}` (span)
- *   - `modal-summary${Namecat}-${i}` (p)
- *   - `modal-actors${Namecat}-${i}` (span)
- * - La fonction `formatBoxOffice` doit être définie pour formater les recettes du box-office.
+ *   - 'modal-poster${Namecat}-${i}' (img)
+ *   - 'modal-title${Namecat}-${i}' (h2)
+ *   - 'modal-year-genre${Namecat}-${i}' (p)
+ *   - 'modal-rating-duration${Namecat}-${i}' (p)
+ *   - 'modal-imdb-score${Namecat}-${i}' (span)
+ *   - 'modal-box-office${Namecat}-${i}' (span)
+ *   - 'modal-director${Namecat}-${i}' (span)
+ *   - 'modal-summary${Namecat}-${i}' (p)
+ *   - 'modal-actors${Namecat}-${i}' (span)
+ * - La fonction 'formatBoxOffice' doit être définie pour formater les recettes du box-office.
  *
  * @throws {Error} Si la requête API échoue ou si les éléments HTML sont introuvables.
  *
@@ -163,14 +163,13 @@ function ModalValue(urlmovie,typecat){
                         const modalDirector = document.getElementById(`modal-director${Namecat}-${i}`);
                         const modalSummary = document.getElementById(`modal-summary${Namecat}-${i}`);
                         const modalActors = document.getElementById(`modal-actors${Namecat}-${i}`);
-
                         //console.log(modalPoster)
 
                         // Met à jour chaque élément avec les données du film
                         modalPoster.src = data.image_url;
                         modalPoster.alt = data.title;
                         modalTitle.textContent = data.title;
-                        modalRatingDuration.textContent = `${data.duration} minutes (${data.countries ? data.countries.join('/') : N/A})`;
+                        modalRatingDuration.textContent = `${FrenchRating(data.rated)} - ${data.duration} minutes (${data.countries ? data.countries.join('/') : N/A})`;
                         modalYearGenre.textContent = `${data.year || 'N/A'} - ${data.genres ? data.genres.join(', ') : 'N/A'}`;
                         modalImdbScore.textContent = data.imdb_score;
                         modalBoxOffice.textContent = formatBoxOffice(data.worldwide_gross_income);

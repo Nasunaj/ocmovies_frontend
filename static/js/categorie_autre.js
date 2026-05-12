@@ -1,7 +1,7 @@
 /**
  * Charge et affiche les films d'une catégorie donnée (en utilisant le nom du genre) dans le cas du choix du genre par
  * l'utilisateur.
- * Récupère les 7 meilleurs films de la catégorie, affiche les 6 premiers dans une section avec :
+ * Récupère les meilleurs films de la catégorie, les affichent dans une section avec :
  * - Un dropdown pour changer de catégorie.
  * - Une grille de cartes avec une visibilité responsive.
  * - Des boutons "Voir plus/moins" pour basculer l'affichage.

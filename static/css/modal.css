@@ -84,7 +84,7 @@ Corps de la modale (image et infos)*/
     grid-row: 2;    /* 2ème ligne */
     width: 698px;
     height: auto;
-    margin-top: -50px; /* Chevauchement de 50px */
+    margin-top: 0; /* Chevauchement de 50px : -50px ça peut faire un chevauchement avec le block d'en haut donc ici il semble plutôt à éviter. */
     margin-bottom: 25px;
 }
 .modal-avecactors {
@@ -117,8 +117,10 @@ Corps de la modale (image et infos)*/
 }
 
 .modal-int-realise,
-.modal-director{
-    display: block; /* Chaque span prendra toute la largeur disponible et passera à la ligne */
+.modal-director,
+.modal-rating-duration{
+    /*display: block;*/ /* Chaque span prendra toute la largeur disponible et passera à la ligne */
+    display : inline-block; /* Pour Rester sur la même ligne */
 }
 .modal-director {
     margin-bottom: var(--spacing-lg);
@@ -127,7 +129,6 @@ Corps de la modale (image et infos)*/
 .modal-actors{
     display: block;
 }
-
 
 
 /*------------------------------------------------

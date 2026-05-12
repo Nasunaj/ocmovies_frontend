@@ -1,13 +1,13 @@
 /**
  * Initialise une modale avec ses écouteurs d'événements (ouverture, fermeture).
  * Ajoute des écouteurs pour :
- * - Fermer la modale en cliquant sur le bouton "×" (`.close-modal`).
- * - Fermer la modale en cliquant sur le bouton "Fermer" (`.close-button`).
+ * - Fermer la modale en cliquant sur le bouton "×" ('.close-modal').
+ * - Fermer la modale en cliquant sur le bouton "Fermer" ('.close-button').
  * - Fermer la modale en cliquant à l'extérieur.
  *
  * @param {string} modalId - ID unique de la modale (ex: "movie-modal-1").
- * @returns {Function} Une fonction `openModal` pour ouvrir la modale depuis l'extérieur.
- * @throws {Error} Si `modalId` n'est pas une chaîne non vide ou si la modale n'existe pas.
+ * @returns {Function} Une fonction 'openModal' pour ouvrir la modale depuis l'extérieur.
+ * @throws {Error} Si 'modalId' n'est pas une chaîne non vide ou si la modale n'existe pas.
  *
  * @example
  * // Initialiser une modale et l'ouvrir
@@ -60,16 +60,16 @@ function initModal(modalId) {
 
 /**
  * Initialise toutes les modales de la page et configure les écouteurs pour les boutons "Détails".
- * - Parcourt toutes les modales (éléments avec la classe `.modal`).
+ * - Parcourt toutes les modales (éléments avec la classe '.modal').
  * - Appelle `initModal` pour chaque modale et stocke sa fonction `openModal`.
  * - Ajoute un écouteur unique sur `document` pour les boutons "Détails" (délégation d'événements).
  *   Utilise l'attribut `data-modal-id` pour associer un bouton à une modale.
  *
  * @depends
- * - Les modales doivent avoir un ID unique et la classe `.modal`.
+ * - Les modales doivent avoir un ID unique et la classe '.modal'.
  * - Les boutons "Détails" doivent avoir :
- *   - La classe `.top-movies-button` ou `.movie-button`.
- *   - Un attribut `data-modal-id` avec l'ID de la modale à ouvrir.
+ *   - La classe `.top-movies-button` ou '.movie-button'.
+ *   - Un attribut 'data-modal-id' avec l'ID de la modale à ouvrir.
  *
  * @example
  * // Appeler une seule fois au chargement de la page

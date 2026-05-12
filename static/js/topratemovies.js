@@ -6,14 +6,14 @@
  * @description
  * - Réalisation d'une première requête à l'API pour récupérer le film avec le meilleur score IMDb.
  * - Puis réalisation d'une deuxième requête pour récupérer les détails complets du film (description, etc.).
- * - Construiction de façon dynamique le HTML du film et insertion dans la section `.best-movie-section`.
+ * - Construiction de façon dynamique le HTML du film et insertion dans la section '.best-movie-section'.
  * - Gètion des erreurs d'affichage des images avec un fallback (`notfound.jpg`).
  *
  * @depends
  * - L'API doit être disponible à l'URL `http://127.0.0.1:8000/api/v1/titles/`.
  * - La section `.best-movie-section` doit exister dans le DOM.
  *
- * @throws {Error} Si la requête API échoue ou si la section `.best-movie-section` n'existe pas.
+ * @throws {Error} Si la requête API échoue ou si la section '.best-movie-section' n'existe pas.
  *
  * @example
  * // Appel automatique au chargement de la page
@@ -60,19 +60,19 @@ fetch(bestMovieUrl)
 
 
 /**
- * Charge et affiche les sept films les mieux notés (score IMDb) depuis l'API.
+ * Charge et affiche les films les mieux notés (score IMDb) depuis l'API.
  * Affiche les films du deuxième au septième (le 1er est déjà affiché : voir ci-dessus) dans la section `.top-rated-movies`,
  * avec une logique de visibilité avec les boutons "Voir plus/moins".
  *
  * @description
  * 1) Récupère les 7 films les mieux notés via l'API (`/titles/?sort_by=-imdb_score&page_size=7`).
  * 2) Affiche les films 2 à 7 dans une grille avec des classes CSS conditionnelles :
- * - Appelle `setupVisibilityToggle` (voir btndetails.js) pour activer les boutons "voir plus/ voir moins"
+ * - Appelle 'setupVisibilityToggle' (voir /static/js/btndetails.js) pour activer les boutons "voir plus/ voir moins"
  *
  * @depends
  * - L'API doit être disponible à l'URL `http://127.0.0.1:8000/api/v1/titles/`.
- * - La section `.top-rated-movies` doit exister dans le DOM.
- * - La fonction `setupVisibilityToggle` doit être définie.
+ * - La section '.top-rated-movies' doit exister dans le DOM.
+ * - La fonction 'setupVisibilityToggle' doit être définie.
  *
  * @throws {Error} Si la requête API échoue, si moins de sept films sont retournés, ou si la section `.top-rated-movies` n'existe pas.
  *
@@ -80,31 +80,31 @@ fetch(bestMovieUrl)
  * // Appel automatique au chargement de la page
  * // Le code est exécuté directement sans fonction wrapper.
  */
-// 1. URL pour récupérer les 7 meilleurs films
+// URL pour récupérer les 7 meilleurs films
 const topMoviesUrl = 'http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score&page_size=7';
 
-// 2. Requête fetch
+// Requête fetch
 fetch(topMoviesUrl)
     .then(response => response.json())
     .then(data => {
-        // 3. Extraire les 7 meilleurs films (le 1er est déjà affiché ailleurs)
+        // Extraire les 7 meilleurs films (le 1er est déjà affiché ailleurs)
         const topMovies = data.results; // Tableau des 7 meilleurs films
 
-        // 4. Sélectionner la section HTML
+        // Sélectionner la section HTML
         const bestMovieSection = document.querySelector('.top-rated-movies');
 
-        // 5. Construire le HTML pour les 6 cartes (du 2ème au 7ème film)
+        // Construire le HTML pour les 6 cartes (du 2ème au 7ème film)
         let movieHTML = `
       <section class="top-rated-movies">
         <h2>Films les mieux notés</h2>
         <div class="top-movies-grid">
     `;
 
-        // 6. Boucle pour générer les 6 cartes (index 1 à 6)
+        // Boucle pour générer les 6 cartes (index 1 à 6)
         for (let i = 1; i <= 6; i++) {
             const movie = topMovies[i]; // 2ème film = index 1, 3ème = index 2, etc.
 
-            // 7. Déterminer les classes CSS pour chaque carte (visibilité)
+            // Déterminer les classes CSS pour chaque carte (visibilité)
             let cardClass = 'top-movies-card';
             if (i <= 2) {
                 cardClass += ' visible-on-all'; // Cartes 1 et 2 : visibles sur tous les écrans
@@ -114,8 +114,8 @@ fetch(topMoviesUrl)
                 cardClass += ' hidden-on-tablet-and-mobile'; // Cartes 5 et 6 : cachées sur tablette et mobile
             }
             /*Dans la boucle for pour le nom des classes il est nécessaire d'avoir des espaces avec les noms de classes
-            car on cumule les noms de classes et donc sans espaces au lieu d'avoir deux nom de classes on aurait qu'une
-             non définie en CSS*/
+            car on cumule les noms de classes et donc sans espaces au lieu d'avoir deux noms de classes nous aurions
+            qu'une classe non définie en CSS*/
             // 8. Ajouter le HTML pour chaque carte
             movieHTML += `
         <article class="${cardClass}">
@@ -131,7 +131,7 @@ fetch(topMoviesUrl)
       `;
         }
 
-        // 9. Fermer les balises et ajouter les boutons
+        // Fermer les balises et ajouter les boutons
         movieHTML += `
         </div>
         <button id="voir-plus" class="voir-plus-button">Voir plus</button>
@@ -139,7 +139,7 @@ fetch(topMoviesUrl)
       </section>
     `;
 
-        // 10. Insérer le HTML dans le DOM
+        // Insérer le HTML dans le DOM
         bestMovieSection.innerHTML = movieHTML;
         setupVisibilityToggle('.top-movies-grid', '#voir-plus', '#voir-moins');
 
