@@ -138,12 +138,16 @@ function ModalValue(urlmovie,typecat){
     //console.log(pageSize);
 
     const start = typecat === "top-rated-movies" ? 1 : 0;
-    const end = typecat === "top-rated-movies" ? pageSize : pageSize - 1;
+    //const end = typecat === "top-rated-movies" ? pageSize : pageSize - 1;
+    const end = pageSize-1;
 
     fetch(urlmovie)
         .then(response => response.json())
         .then(data => {
-            for(let i = start; i<=end; i++){
+            // Au cas où il y a moins de 6 films comme par exemple la catégorie Adulte
+            const RealEnd = Math.min(end, data.results.length - 1);
+
+            for(let i = start; i<=RealEnd; i++){
                 const bestMovie = data.results[i];
                 //console.log(bestMovie);
                 fetch(bestMovie.url)
